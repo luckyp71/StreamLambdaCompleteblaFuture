@@ -24,14 +24,19 @@ public class Example1 {
 		System.out.println("Display all elements of collection without any filter");
 		col.stream().forEach(i -> System.out.println(i));
 
-		// Display and sort the elements of collection with stream and method reference
+		// Display and sort ascending the elements of collection with stream and method reference
 		System.out.println("Display and sort all elements of collection with stream and method reference");
 		col.stream().sorted((a,b) -> a.compareToIgnoreCase(b)).forEach(System.out::println);
 		
-		// Display, filter, and sort the element of collection with "a" and "b" as parameter
-		System.out.println("Display, filter, and sort the element of collection with \"a\" and \"b\" as parameter");
+		// Display, filter, and sort ascending the element of collection with "a" and "b" as parameters
+		System.out.println("Display, filter, and sort the element of collection with \"a\" and \"b\" as parameters");
 		col.stream().filter(i -> i.equalsIgnoreCase("a") || i.equalsIgnoreCase("b")
 				).sorted((a,b) -> a.compareToIgnoreCase(b)).forEach(System.out::println);
+		
+		// Display, filter, and sort descending the element of collection with "a" and "b" as parameters
+		System.out.println("Display, filter, and sort the element of collection with \"a\" and \"b\" as parameters");
+		col.stream().filter(i -> i.equalsIgnoreCase("a") || i.equalsIgnoreCase("b")
+				).sorted((a,b) -> b.compareToIgnoreCase(a)).forEach(System.out::println);
 	}
 
 }
