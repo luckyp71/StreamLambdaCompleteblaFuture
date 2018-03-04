@@ -11,7 +11,7 @@ public class Example2 {
 		ExecutorService ex = Executors.newWorkStealingPool();
 		
 		// CompletableFuture with runAsync
-		// runAsync method is used when we'd like to run background process which doesn't return any value
+		// runAsync method is used when we'd like to run background task asynchronously which doesn't return any value
 		CompletableFuture<Void> cf1 = CompletableFuture.runAsync(() ->{
 			System.out.println("Run from "+Thread.currentThread().getName());
 		});
@@ -25,7 +25,7 @@ public class Example2 {
 		cf2.get();
 		
 		// CompletableFuture with supplyAsync
-		// supplyAsync method is used when we'd like to run background process which return value
+		// supplyAsync method is used when we'd like to run background task asynchronously which return value
 		CompletableFuture<String> cf3 = CompletableFuture.supplyAsync(() -> {
 			return "Run from "+Thread.currentThread().getName();
 		});
