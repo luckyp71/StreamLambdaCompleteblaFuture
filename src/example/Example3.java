@@ -1,3 +1,4 @@
+package example;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -26,7 +27,7 @@ public class Example3 {
 		Collection<CompletableFuture<String>> docs = new ArrayList<>();
 
 		LongStream.range(1, 5).forEach(i -> {
-
+				
 			try {
 				docs.add(getDoc("http://www.oracle.com/technetwork/java/index.html"));
 			} catch (InterruptedException e) {
@@ -67,10 +68,10 @@ public class Example3 {
 		return CompletableFuture.supplyAsync(() -> {
 
 			Document doc = null;
-
 			try {
 				System.out.println("Running task from thread " + Thread.currentThread().getName());
 				doc = Jsoup.connect(url).get();
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

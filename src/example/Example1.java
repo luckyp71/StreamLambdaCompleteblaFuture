@@ -1,3 +1,4 @@
+package example;
 
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -37,6 +38,8 @@ public class Example1 {
 		System.out.println("Display, filter, and sort the element of collection with \"a\" and \"b\" as parameters");
 		col.stream().filter(i -> i.equalsIgnoreCase("a") || i.equalsIgnoreCase("b")
 				).sorted((a,b) -> b.compareToIgnoreCase(a)).forEach(System.out::println);
+		
+		System.out.print("");
 	}
 
 }
