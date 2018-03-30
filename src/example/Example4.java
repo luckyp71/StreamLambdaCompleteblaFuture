@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -122,5 +123,9 @@ public class Example4 {
 		
 		System.out.println("\nResult of using thenApplyAsync: "+result.get());
 		System.out.println("\nResult of using thenCombineAsync: \n"+result2.get());
+		
+		System.out.println();
+		
+
 	}
 }
