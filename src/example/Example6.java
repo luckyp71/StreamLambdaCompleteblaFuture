@@ -6,7 +6,7 @@ import org.jsoup.nodes.Document;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-
+import java.util.concurrent.TimeUnit;
 import java.util.Collection;
 import java.util.List;
 import java.io.IOException;
@@ -26,6 +26,18 @@ public class Example6 {
 											"https://www.packtpub.com/");
 		getDocs(urls).stream().forEach(i -> {		
 			try {
+				int c = 0;
+				while(!i.isDone()) {
+					c++;
+					System.out.println("Stage "+c);
+					TimeUnit.SECONDS.sleep(2);
+					// Set timeout = 20 seconds
+					if(c == 10 && !i.isDone()) {
+						i.cancel(true);
+						System.out.println("Timeout");
+					}
+				}
+				
 			String title = i.get().title();
 			Elements links = i.get().select("a[href]");
 		
