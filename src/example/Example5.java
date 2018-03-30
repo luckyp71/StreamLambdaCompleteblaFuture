@@ -2,17 +2,12 @@ package example;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import model.Marketing;
 import java.util.Map;
-import java.util.HashMap;
+
 
 public class Example5 {
 	

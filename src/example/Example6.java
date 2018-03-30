@@ -24,16 +24,15 @@ public class Example6 {
 	public static void main (String args[]) {
 		List<String> urls = Arrays.asList("https://www.oreilly.com","https://www.google.com","https://www.facebook.com",
 											"https://www.packtpub.com/");
-		
 		getDocs(urls).stream().forEach(i -> {		
 			try {
 			String title = i.get().title();
 			Elements links = i.get().select("a[href]");
 		
-			// Display Web Title
+			// Display the web title
 			System.out.println(title);
 			
-			// Display all listed links of each web and its IP
+			// Display all listed links of each web as well as its IP
 			links.stream().forEach(link -> {
 					try {					
 						String l = link.attr("abs:href");
@@ -54,7 +53,6 @@ public class Example6 {
 				e.printStackTrace();
 			}
 		});
-		
 	}
 
 	public static Collection<CompletableFuture<Document>>getDocs(List<String> urls){

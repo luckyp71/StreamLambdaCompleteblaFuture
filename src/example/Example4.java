@@ -49,7 +49,7 @@ public class Example4 {
 			return mName;
 		});
 		
-		// Get employee address based on result of name future
+		// Get employee address based on the result of name future
 		CompletableFuture<String> address = CompletableFuture.supplyAsync(()->{
 			String eAddress = "";
 			for(Marketing e: marketingEmployees) {
@@ -69,7 +69,7 @@ public class Example4 {
 			return eAddress;
 		});
 		
-		// Get employee salary based on result of address future
+		// Get employee salary based on the result of address future
 		CompletableFuture<Integer> salary = CompletableFuture.supplyAsync(()->{
 			Integer eSalary = null;
 			for(Marketing e: marketingEmployees) {
