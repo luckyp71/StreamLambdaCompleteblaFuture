@@ -6,6 +6,8 @@ import org.jsoup.nodes.Document;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.Collection;
 import java.util.List;
@@ -20,11 +22,12 @@ import java.net.MalformedURLException;
 
 public class Example6 {
 
+	private static ExecutorService ex = Executors.newFixedThreadPool(4);
 
 	public static void main (String args[]) {
 		List<String> urls = Arrays.asList("https://www.oreilly.com","https://www.google.com","https://www.facebook.com",
 											"https://www.packtpub.com/");
-		getDocs(urls).stream().forEach(i -> {		
+		getDocs(urls).parallelStream().forEach(i -> {		
 			try {
 				int c = 0;
 				while(!i.isDone()) {
@@ -34,6 +37,7 @@ public class Example6 {
 					// Set timeout = 20 seconds
 					if(c == 10 && !i.isDone()) {
 						i.cancel(true);
+						ex.shutdown();
 						System.out.println("Timeout");
 					}
 				}
@@ -65,11 +69,12 @@ public class Example6 {
 				e.printStackTrace();
 			}
 		});
+		ex.shutdown();
 	}
 
 	public static Collection<CompletableFuture<Document>>getDocs(List<String> urls){
 			Collection <CompletableFuture<Document>> getDocs = new ArrayList<>();
-			urls.stream().forEach(i ->{
+			urls.parallelStream().forEach(i ->{
 				getDocs.add(getDoc(i));
 			});
 			return getDocs;
@@ -85,6 +90,6 @@ public class Example6 {
 				ioe.printStackTrace();
 			}
 			return doc;
-		});
+		},ex);
 	}
 }
